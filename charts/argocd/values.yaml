@@ -26,7 +26,7 @@ argocd:
     config:
       url: https://argocd.cedi.dev
     ingress:
-      enabled: false
+      enabled: true
       https: true
       pathType: ImplementationSpecific
       hosts:
