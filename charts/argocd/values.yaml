@@ -1,0 +1,86 @@
+argocd:
+  fullnameOverride: argocd
+  dex:
+    enabled: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  redis:
+    serviceAccount:
+      create: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  repoServer:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  server:
+    certificate:
+      enabled: false
+    config:
+      url: https://argocd.cedi.dev
+    ingress:
+      enabled: false
+      https: true
+      pathType: ImplementationSpecific
+      hosts:
+        - argocd.cedi.dev
+      tls:
+        - secretName: argocd-secret
+          hosts:
+            - argocd.cedi.dev
+
+      annotations:
+        "cert-manager.io/cluster-issuer": "letsencrypt-prod"
+        "kubernetes.io/ingress.class": nginx
+        "nginx.ingress.kubernetes.io/backend-protocol": HTTPS
+        "nginx.ingress.kubernetes.io/ssl-passthrough": "true"
+    rbacConfig:
+      policy.default: role:readonly
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+
+  configs:
+    repositories:
+      bitnami:
+        name: bitnami
+        type: helm
+        url: https://charts.bitnami.com/bitnami
+      grafana:
+        name: grafana
+        type: helm
+        url: https://grafana.github.io/helm-charts
+      argo:
+        name: Argo
+        type: helm
+        url: https://argoproj.github.io/argo-helm
+      jetstack:
+        name: jetstack
+        type: helm
+        url: https://charts.jetstack.io
+      ingress-nginx:
+        name: ingress-nginx
+        type: helm
+        url: https://kubernetes.github.io/ingress-nginx
+      deliveryhero:
+        name: deliveryhero
+        type: helm
+        url: https://charts.deliveryhero.io/
+      prometheus:
+        name: prometheus
+        type: helm
+        url: https://prometheus-community.github.io/helm-charts
