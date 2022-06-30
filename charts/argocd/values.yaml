@@ -24,17 +24,17 @@ argocd:
     certificate:
       enabled: false
     config:
-      url: https://argocd.cedi.dev
+      url: https://argocd.poc.av0.de
     ingress:
       enabled: true
       https: true
       pathType: ImplementationSpecific
       hosts:
-        - argocd.cedi.dev
+        - argocd.poc.av0.de
       tls:
         - secretName: argocd-secret
           hosts:
-            - argocd.cedi.dev
+            - argocd.poc.av0.de
 
       annotations:
         "cert-manager.io/cluster-issuer": "letsencrypt-prod"
