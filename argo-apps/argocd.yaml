@@ -6,12 +6,15 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: https://kubernetes.default.svc
-  project: default
+    server: 'https://kubernetes.default.svc'
   source:
     path: charts/argocd
-    repoURL: https://github.com/cedi/minimal-argocd.git
+    repoURL: 'https://github.com/cedi/minimal-argocd.git'
     targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  project: default
   syncPolicy:
     automated:
       prune: true

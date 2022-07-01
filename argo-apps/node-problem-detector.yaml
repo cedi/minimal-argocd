@@ -8,12 +8,15 @@ metadata:
 spec:
   destination:
     namespace: node-problem-detector
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
   project: default
   source:
     path: charts/node-problem-detector
-    repoURL: https://github.com/cedi/minimal-argocd.git
+    repoURL: 'https://github.com/cedi/minimal-argocd.git'
     targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
   syncPolicy:
     automated:
       prune: true
