@@ -1,0 +1,11 @@
+extends: relaxed
+
+rules:
+  line-length: disable
+  new-line-at-end-of-file: disable
+
+ignore: |
+  .yamllint.yml
+  charts/*/charts/
+  charts/*/templates/
+  kustomize/bases/*/charts/
