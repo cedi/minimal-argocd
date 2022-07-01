@@ -22,7 +22,8 @@ argocd:
 
   server:
     certificate:
-      enabled: false
+      enabled: true
+      domain: argocd.poc.av0.de
     config:
       url: https://argocd.poc.av0.de
     ingress:
