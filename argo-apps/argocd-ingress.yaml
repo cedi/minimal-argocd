@@ -11,7 +11,7 @@ spec:
     namespace: default
     server: 'https://kubernetes.default.svc'
   source:
-    path: manifests/cluster-issuer
+    path: manifests/argocd
     repoURL: 'https://github.com/cedi/minimal-argocd.git'
     targetRevision: main
   syncPolicy:
